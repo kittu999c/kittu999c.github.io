@@ -511,7 +511,7 @@
                         return map;
                     }, {});
 
-                    $.get("http://maps.googleapis.com/maps/api/geocode/json?address=" + postalCode + "&apikey=AIzaSyDc6PZzinreqhsSQPcgSZhorj212wcI8_g", function (data, status) {
+                    $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + postalCode + "&apikey=AIzaSyDc6PZzinreqhsSQPcgSZhorj212wcI8_g", function (data, status) {
                         if (!data) {
                             notifier.error("An error occured while fetching nearest banks");
                             return false;
