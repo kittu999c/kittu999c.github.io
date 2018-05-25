@@ -265,9 +265,15 @@
                                         <div class="col-lg-12">
                                             <h4>Enter your Postal Code</h4>
                                         </div>
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-11">
                                             <input type="text" class="text-input" name="postalcode" />
                                         </div>
+                                        <div class="col-lg-1" style="padding-left:0;">
+                                            <a id="submitPincode" style="vertical-align: -webkit-baseline-middle;font-size: 1.3em;">
+                                                <i class="fa fa-search" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+
                                         <div id="google-map"></div>
                                     </div>
                                     <div class="col-lg-4 banks-list">
@@ -480,8 +486,17 @@
                 }
 
                 function addEventListenersToPostalInput() {
-                    $("input[name='postalcode']").on("input", function (e) {
-                        var $e = $(e.currentTarget);
+                    // $("input[name='postalcode']").on("input", function (e) {
+                    //     var $e = $(e.currentTarget);
+                    //     var inputCode = $e.val().trim();
+                    //     if (inputCode.length === 6 && /^[0-9]+$/.test(inputCode)) {
+                    //         postalCode = inputCode;
+                    //         searchNearbyBranches();
+                    //     }
+                    // });
+
+                    $("#submitPincode").click(function (e) {
+                        var $e = $("input[name='postalcode']");
                         var inputCode = $e.val().trim();
                         if (inputCode.length === 6 && /^[0-9]+$/.test(inputCode)) {
                             postalCode = inputCode;
@@ -685,6 +700,14 @@
             });
 
         })(jQuery);
+
+        function stopRKey(evt) {
+            var evt = (evt) ? evt : ((event) ? event : null);
+            var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+            if ((evt.keyCode == 13) && (node.type == "text")) { return false; }
+        }
+
+        document.onkeypress = stopRKey;
     </script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHXD3NoDs5NQEgSV1n4YZVR4pMCw2-W70&callback=initMap">
     </script>
